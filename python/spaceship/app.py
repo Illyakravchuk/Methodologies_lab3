@@ -18,6 +18,7 @@ def make_app(settings: Settings) -> FastAPI:
 
     if settings.debug:
         app.mount('/static', StaticFiles(directory='build'), name='static')
+        #method is used to mount a directory called 'build' as a static file directory
 
     app.include_router(api.router, prefix='/api', tags=['api'])
     app.include_router(health.router, prefix='/health', tags=['health'])
